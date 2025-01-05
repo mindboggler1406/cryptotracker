@@ -1,0 +1,100 @@
+:root {
+  --primary-color: #22223b;
+  --secondary-color: #4a4e69;
+  --tertiary-color: #9a8c98;
+  --accent-color: #c9ada7;
+  --text-color: #f2e9e4;
+  --background-color: #22223b;
+  --border-color: #4a4e69;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+.header {
+  background: none;
+  color: var(--text-color);
+  padding: 2rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--accent-color);
+  background: -webkit-linear-gradient(var(--accent-color), var(--tertiary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.watchlist-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 5%;
+}
+.card {
+  background: linear-gradient(to bottom right, var(--secondary-color), var(--primary-color));
+  border-radius: 15px;
+  box-shadow: 0 10px 20px var(--shadow-color);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.watchlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+.watchlist-table th, .watchlist-table td {
+  padding: 1rem;
+  text-align: left;
+}
+.watchlist-table thead th {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.watchlist-table tbody tr {
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s ease;
+}
+.watchlist-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.watchlist-table td {
+  border-bottom: 1px solid var(--border-color);
+}
+.action-btn {
+  background: var(--tertiary-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+.action-btn:hover {
+  background: var(--accent-color);
+}
+.remove-btn {
+  background: #ff6b6b;
+  color: var(--text-color);
+}
+.remove-btn:hover {
+  background: #ff4757;
+}
+
+a.watchlist-names{
+  text-decoration: none;
+  color: inherit;
+}

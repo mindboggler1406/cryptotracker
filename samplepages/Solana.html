@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../samplepage.css">
+    <title>Bitcoin - CryptoDash</title>
+  
+</head>
+<body>
+
+    <header class="header">
+        <a href="../homepage.html" class="logo">CryptoDash</a>
+    </header>
+
+    <div class="main-content">
+        <div class="card">
+            <h2>SOLANA (SOL)</h2>
+                 <div style="height: 300px; margin-bottom: 2rem;" id="tradingview-chart">
+ <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+    {
+    "symbols": [
+      [
+        "COINBASE:SOLUSD|1D"
+      ]
+    ],
+    "chartOnly": false,
+    "width": "100%",
+    "height": "100%",
+    "locale": "en",
+    "colorTheme": "dark",
+    "autosize": true,
+    "showVolume": false,
+    "showMA": false,
+    "hideDateRanges": false,
+    "hideMarketStatus": false,
+    "hideSymbolLogo": false,
+    "scalePosition": "right",
+    "scaleMode": "Normal",
+    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+    "fontSize": "10",
+    "noTimeScale": false,
+    "valuesTracking": "1",
+    "changeMode": "price-and-percent",
+    "chartType": "area",
+    "maLineColor": "#2962FF",
+    "maLineWidth": 1,
+    "maLength": 9,
+    "headerFontSize": "medium",
+    "lineWidth": 2,
+    "lineType": 0,
+    "dateRanges": [
+      "1d|1",
+      "1m|30",
+      "3m|60",
+      "12m|1D",
+      "60m|1W",
+      "all|1M"
+    ]
+  }
+    </script>
+  
+                 </div></div>
+
+            <div class="market-details">
+                <div>
+                    <p><strong>Current Price:</strong><div class="samplepage-items" id="current-price"></div></p>
+                </div>
+                <div>
+                    <p><strong>Market Cap:</strong><div class="samplepage-items" id="market-cap"></div> </p>
+                </div>
+                <div>
+                    <p><strong>24h Price Change:</strong><div class="samplepage-items" id="price-change-24h"></div></p>
+                </div>
+                <div>
+                    <p><strong>Volume (24h):</strong><div class="samplepage-items" id="volume-24h"></div> </p>
+                </div>
+                <div>
+                    <p><strong>Circulating Supply:</strong><div class="samplepage-items" id="circulating-supply"></div></p>
+                </div>
+                <div>
+                    <p><strong>Max Supply:</strong><div class="samplepage-items" id="max-supply"></div></p>
+                </div>
+                <div>
+                    <p><strong>ATH:</strong><div class="samplepage-items" id="ath"></div></p>
+                </div>
+                <div>
+                    <p><strong>ATL:</strong><div class="samplepage-items" id="atl"></div></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Chat</h2>
+            <div class="chat-area">
+            
+                <p><strong>User1:</strong> What are your thoughts on Bitcoin's future?</p>
+                <p><strong>User2:</strong> I think it has potential with the new updates coming up!</p>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+
+        <div class="card" style="grid-column: span 2;">
+            <h2>Latest News</h2>
+            <div class="news-item" id="news-item">
+                
+            </div>
+            
+        </div>
+    </div>
+    <script>
+       async function fetchBitcoinData() {
+  const url = 'https://api.coingecko.com/api/v3/coins/solana';
+
+      const response = await fetch(url);
+      const data = await response.json();
+      const price = data.market_data.current_price.usd;
+      const marketCap = data.market_data.market_cap.usd;
+      const priceChange24h = data.market_data.price_change_percentage_24h;
+      const volume24h = data.market_data.total_volume.usd;
+      const circulatingSupply = data.market_data.circulating_supply;
+      const maxSupply = data.market_data.max_supply;
+      const ath = data.market_data.ath.usd;
+      const atl = data.market_data.atl.usd;
+
+      document.getElementById('current-price').innerText = `$${price.toFixed(2)}`;
+      document.getElementById('market-cap').innerText = `$${marketCap.toFixed(2)}`;
+      document.getElementById('price-change-24h').innerText = `${priceChange24h.toFixed(2)}%`;
+      document.getElementById('volume-24h').innerText = `$${volume24h.toFixed(2)}`;
+      document.getElementById('circulating-supply').innerText = `${circulatingSupply.toFixed(2)} ETH`;
+      document.getElementById('max-supply').innerText = `${maxSupply ? maxSupply.toFixed(2) : 'N/A'} ETH`;
+      document.getElementById('ath').innerText = `$${ath.toFixed(2)}`;
+      document.getElementById('atl').innerText = `$${atl.toFixed(2)}`;
+ 
+}
+
+const API_KEY = 'b1352fd2904f418294d9eb27025708a3';
+const endpoint = 'https://newsapi.org/v2/everything';
+const newsContainer = document.getElementById('news-item');
+
+async function fetchCryptoNews() {
+    try {
+        const params = new URLSearchParams({
+            q: 'bitcoin OR BTC',
+            language: 'en',
+            sortBy: 'publishedAt',
+            apiKey: API_KEY,
+        });
+
+        const response = await fetch(`${endpoint}?${params}`);
+        const data = await response.json();
+
+        if (data.articles && data.articles.length > 0) {
+            newsContainer.innerHTML = data.articles
+                .map(article => `
+                    
+                       <a href="#" class="news-title">${article.title}</a>
+                        <p>${article.description}</p>
+                    
+                `)
+                .join('');
+        } else {
+            newsContainer.innerHTML = '<p>No news found.</p>';
+        }
+    } catch (error) {
+        console.error('Error fetching crypto news:', error);
+        newsContainer.innerHTML = '<p>Failed to load news. Please try again later.</p>';
+    }
+}
+
+window.onload = () => {
+  fetchBitcoinData();
+    fetchCryptoNews();
+};
+setInterval(fetchBitcoinData, 10000);
+    </script>
+  
+   </script>
+
+</body>
+</html>

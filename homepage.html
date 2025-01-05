@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="homepage.css">
+    <title>CryptoDash - Cryptocurrency Dashboard</title>
+    
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">CryptoDash</a>
+        <div class="search-container">
+            <input type="text" placeholder="Search crypto...">
+            <button>Search</button>
+            <a href='watchlist.html' class="watchlist" id="watchlist">Watchlist</a>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="card">
+            <table class="crypto-table">
+                <thead>
+                    <tr>
+                        <th>Cryptocurrency</th>
+                        <th>Price</th>
+                        <th>24h Price Change</th>
+                        <th>Market Cap</th>
+                        <th>Watchlist</th>
+                    </tr>
+                </thead>
+                <tbody id="crypto-table-body">
+                    <tr>
+                        <td><a href="samplepages/Bitcoin.html" class="cryptoname">Bitcoin (BTC)</a></td>
+                        <td id="current-price-btc"></td>
+                        <td class="center-content"><p id="price-change-24h-btc"></p></td>                
+                        <td id="market-cap-btc"></td>
+                        <td class="center-button"><button class="watchlist-btn" id="watchlist-btn-bitcoin">Add</button></td>
+                    </tr>
+                    <tr>
+                         <td><a href="samplepages/Etherium.html" class="cryptoname">Ethereum (ETH)</a></td>
+                        <td id="current-price-eth"></td>
+                        <td class="center-content"><p id="price-change-24h-eth"></p></td>
+                        <td id="market-cap-eth"></td>
+                        <td class="center-button"><button id="watchlist-btn-ethereum" class="watchlist-btn">Add</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><a href="samplepages/Tether.html" class="cryptoname">Tether (USDT)</a></td>
+                        <td id="current-price-usdt"></td>
+                        <td class="center-content"><p id="price-change-24h-usdt"></p></td>
+                        <td id="market-cap-usdt"></td>
+                        <td class="center-button"><button id="watchlist-btn-tether" class="watchlist-btn">Add</button></td>
+                    </tr>
+                    <tr>
+                        <td><a href="samplepages/Ripple.html" class="cryptoname">XRP (XRP)</a></td>
+                        <td id="current-price-xrp"></td>
+                        <td class="center-content"><p id="price-change-24h-xrp"></p></td>
+                        <td id="market-cap-xrp"></td>
+                        <td class="center-button"><button id="watchlist-btn-ripple" class="watchlist-btn">Add</button></td>
+                    </tr>
+                    <tr>
+                        <td><a href="samplepages/BNB.html" class="cryptoname">BNB (BNB)</a></td>
+                        <td id="current-price-bnb"></td>
+                        <td class="center-content"><p id="price-change-24h-bnb"></p></td>
+                        <td id="market-cap-bnb"></td>
+                        <td class="center-button"><button id="watchlist-btn-binancecoin" class="watchlist-btn">Add</button></td>
+                    </tr>
+                    <tr>
+                        <td><a href="samplepages/Solana.html" class="cryptoname">Solana (SOL)</a></td>
+                        <td id="current-price-sol"></td>
+                        <td class="center-content"><p id="price-change-24h-sol"></p></td>
+                        <td id="market-cap-sol"></td>
+                        <td class="center-button"><button id="watchlist-btn-solana" class="watchlist-btn">Add</button></td>
+                    </tr>
+                    <tr>
+                        <td><a href="samplepages/Avalanche.html" class="cryptoname">Avalanche (AVAX)</a></td>
+                        <td id="current-price-avax"></td>
+                        <td class="center-content"><p id="price-change-24h-avax"></p></td>
+                        <td id="market-cap-avax"></td>
+                        <td class="center-button"><button id="watchlist-btn-avalanche-2" class="watchlist-btn">Add</button></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div class="market-stats">
+                <h2>Market Overview</h2>
+                <p>Total Market Cap: <span id="total-market-cap"></span></p>
+               
+            </div>
+        </div>
+        <div class="news-column">
+            <h2>Latest News</h2>
+            <div id="news-column">
+            
+            
+            </div>
+            
+        </div>
+    </div>
+<script type="module" src="homepage.js"></script>
+
+</body>
+</html>
